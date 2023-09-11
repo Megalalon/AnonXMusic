@@ -1,8 +1,19 @@
 import asyncio
+import random
+import asyncio
 
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
+from config import (
+    AUTO_DOWNLOADS_CLEAR,
+    BANNED_USERS,
+    SOUNCLOUD_IMG_URL,
+    STREAM_IMG_URL,
+    TELEGRAM_AUDIO_URL,
+    TELEGRAM_VIDEO_URL,
+    adminlist,
+)
 from AnonXMusic import YouTube, app
 from AnonXMusic.core.call import Anony
 from AnonXMusic.misc import SUDOERS, db
@@ -36,6 +47,32 @@ from strings import get_string
 
 checker = {}
 upvoters = {}
+
+@app.on_callback_query(filters.regex("MainMarkup") & ~BANNED_USERS)
+@languageCB
+async def del_back_playlist(client, CallbackQuery, _):
+    await CallbackQuery.answer()
+    callback_data = CallbackQuery.data.strip()
+    callback_request = callback_data.split(None, 1)[1]
+    videoid, chat_id = callback_request.split("|")
+    if videoid == str(None):
+        buttons = telegram_markup(_, chat_id)
+    else:
+        buttons = stream_markup(_, videoid, chat_id)
+    chat_id = CallbackQuery.message.chat.id
+    try:
+        await CallbackQuery.edit_message_reply_markup(
+            reply_markup=InlineKeyboardMarkup(buttons)
+        )
+    except:
+        return
+    if chat_id not in wrong:
+        wrong[chat_id] = {}
+    wrong[chat_id][CallbackQuery.message.message_id] = True
+
+
+downvote = {}
+downvoters = {}
 
 
 @app.on_callback_query(filters.regex("ADMIN") & ~BANNED_USERS)
@@ -156,35 +193,41 @@ async def del_back_playlist(client, CallbackQuery, _):
             _["admin_5"].format(mention), reply_markup=close_markup(_)
         )
         await CallbackQuery.message.delete()
-     elif command == "Loop":
+    elif command == "Mute":
+        if await is_muted(chat_id):
+            return await CallbackQuery.answer(_["admin_5"], show_alert=True)
+        await CallbackQuery.answer()
+        await mute_on(chat_id)
+        await Shizuka.mute_stream(chat_id)
+        await CallbackQuery.message.reply_text(_["admin_6"].format(mention))
+    elif command == "Unmute":
+        if not await is_muted(chat_id):
+            return await CallbackQuery.answer(_["admin_7"], show_alert=True)
+        await CallbackQuery.answer()
+        await mute_off(chat_id)
+        await Shizuka.unmute_stream(chat_id)
+        await CallbackQuery.message.reply_text(_["admin_8"].format(mention))
+    elif command == "Loop":
         await CallbackQuery.answer()
         await set_loop(chat_id, 3)
-        await CallbackQuery.message.reply_text(
-            _["admin_25"].format(mention, 3)
-        )
+        await CallbackQuery.message.reply_text(_["admin_25"].format(mention, 3))
     elif command == "Shuffle":
         check = db.get(chat_id)
         if not check:
-            return await CallbackQuery.answer(
-                _["admin_21"], show_alert=True
-            )
+            return await CallbackQuery.answer(_["admin_21"], show_alert=True)
         try:
             popped = check.pop(0)
         except:
-            return await CallbackQuery.answer(
-                _["admin_22"], show_alert=True
-            )
+            return await CallbackQuery.answer(_["admin_22"], show_alert=True)
         check = db.get(chat_id)
         if not check:
             check.insert(0, popped)
-            return await CallbackQuery.answer(
-                _["admin_22"], show_alert=True
-            )
+            return await CallbackQuery.answer(_["admin_22"], show_alert=True)
         await CallbackQuery.answer()
         random.shuffle(check)
         check.insert(0, popped)
         await CallbackQuery.message.reply_text(
-            _["admin_23"].format(mention)
+            _["admin_23"].format(mention), disable_web_page_preview=True
         )      
     elif command == "Skip" or command == "Replay":
         check = db.get(chat_id)
