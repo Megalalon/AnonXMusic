@@ -12,7 +12,7 @@ from unidecode import unidecode
 from youtubesearchpython.__future__ import VideosSearch
 
 from config import YOUTUBE_IMG_URL
-from AnonX import app
+from AnonXMusic import app
 
 
 def changeImageSize(maxWidth, maxHeight, image):
@@ -84,7 +84,7 @@ async def gen_thumb(videoid, user_id):
         x = f.resize((307, 307))
 
         youtube = Image.open(f"cache/thumb{videoid}.png")
-        bg = Image.open(f"AnonX/assets/anonx.png")
+        bg = Image.open(f"AnonXMusicMusic/assets/AnonXMusic.png")
         image1 = changeImageSize(1280, 720, youtube)
         image2 = image1.convert("RGBA")
         background = image2.filter(filter=ImageFilter.BoxBlur(30))
@@ -119,10 +119,10 @@ async def gen_thumb(videoid, user_id):
         background.paste(image3, (0, 0), mask=image3)
 
         draw = ImageDraw.Draw(background)
-        font = ImageFont.truetype("AnonX/assets/font2.ttf", 50)
-        ImageFont.truetype("AnonX/assets/font2.ttf", 30)
-        arial = ImageFont.truetype("AnonX/assets/font2.ttf", 45)
-        ImageFont.truetype("AnonX/assets/font.ttf", 30)
+        font = ImageFont.truetype("AnonXMusicMusic/assets/font2.ttf", 50)
+        ImageFont.truetype("AnonXMusicMusic/assets/font2.ttf", 30)
+        arial = ImageFont.truetype("AnonXMusicMusic/assets/font2.ttf", 45)
+        ImageFont.truetype("AnonXMusicMusic/assets/font.ttf", 30)
         para = textwrap.wrap(title, width=30)
         try:
             draw.text(
@@ -244,7 +244,7 @@ async def gen_qthumb(videoid, user_id):
         x = f.resize((307, 307))
 
         youtube = Image.open(f"cache/thumb{videoid}.png")
-        bg = Image.open(f"AnonX/assets/anonx.png")
+        bg = Image.open(f"AnonXMusic/assets/AnonXMusic.png")
         image1 = changeImageSize(1280, 720, youtube)
         image2 = image1.convert("RGBA")
         background = image2.filter(filter=ImageFilter.BoxBlur(30))
@@ -279,10 +279,10 @@ async def gen_qthumb(videoid, user_id):
         background.paste(image3, (0, 0), mask=image3)
 
         draw = ImageDraw.Draw(background)
-        font = ImageFont.truetype("AnonX/assets/font2.ttf", 50)
-        ImageFont.truetype("AnonX/assets/font2.ttf", 30)
-        arial = ImageFont.truetype("AnonX/assets/font2.ttf", 45)
-        ImageFont.truetype("AnonX/assets/font.ttf", 30)
+        font = ImageFont.truetype("AnonXMusic/assets/font2.ttf", 50)
+        ImageFont.truetype("AnonXMusic/assets/font2.ttf", 30)
+        arial = ImageFont.truetype("AnonXMusic/assets/font2.ttf", 45)
+        ImageFont.truetype("AnonXMusic/assets/font.ttf", 30)
         para = textwrap.wrap(title, width=30)
         try:
             draw.text(
