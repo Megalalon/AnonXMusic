@@ -120,10 +120,10 @@ async def get_thumb(videoid):
         background.paste(image3, (0, 0), mask=image3)
 
         draw = ImageDraw.Draw(background)
-        font = ImageFont.truetype("AnonX/assets/font2.ttf", 50)
-        ImageFont.truetype("AnonX/assets/font2.ttf", 30)
-        arial = ImageFont.truetype("AnonX/assets/font2.ttf", 45)
-        ImageFont.truetype("AnonX/assets/font.ttf", 30)
+        font = ImageFont.truetype("AnonXMusic/assets/font2.ttf", 50)
+        ImageFont.truetype("AnonXMusic/assets/font2.ttf", 30)
+        arial = ImageFont.truetype("AnonXMusic/assets/font2.ttf", 45)
+        ImageFont.truetype("AnonXMusic/assets/font.ttf", 30)
         para = textwrap.wrap(title, width=30)
         try:
             draw.text(
