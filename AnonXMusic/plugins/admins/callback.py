@@ -436,12 +436,12 @@ async def del_back_playlist(client, CallbackQuery, _):
         duration_seconds = int(playing[0]["seconds"])
         if duration_seconds == 0:
             return await CallbackQuery.answer(
-                _["admin_30"], show_alert=True
+                _["admin_22"], show_alert=True
             )
         file_path = playing[0]["file"]
         if "index_" in file_path or "live_" in file_path:
             return await CallbackQuery.answer(
-                _["admin_30"], show_alert=True
+                _["admin_22"], show_alert=True
             )
         duration_played = int(playing[0]["played"])
         if int(command) in [1, 2]:
@@ -469,13 +469,13 @@ async def del_back_playlist(client, CallbackQuery, _):
                 )
             to_seek = duration_played + duration_to_skip + 1
         await CallbackQuery.answer()
-        mystic = await CallbackQuery.message.reply_text(_["admin_32"])
+        mystic = await CallbackQuery.message.reply_text(_["admin_24"])
         if "vid_" in file_path:
             n, file_path = await YouTube.video(
                 playing[0]["vidid"], True
             )
             if n == 0:
-                return await mystic.edit_text(_["admin_30"])
+                return await mystic.edit_text(_["admin_22"])
         try:
             await Yukki.seek_stream(
                 chat_id,
@@ -485,12 +485,12 @@ async def del_back_playlist(client, CallbackQuery, _):
                 playing[0]["streamtype"],
             )
         except:
-            return await mystic.edit_text(_["admin_34"])
+            return await mystic.edit_text(_["admin_26"])
         if int(command) in [1, 3]:
             db[chat_id][0]["played"] -= duration_to_skip
         else:
             db[chat_id][0]["played"] += duration_to_skip
-        string = _["admin_33"].format(seconds_to_min(to_seek))
+        string = _["admin_25"].format(seconds_to_min(to_seek))
         await mystic.edit_text(
             f"{string}\n\nChanges done by: {mention}"
         )
