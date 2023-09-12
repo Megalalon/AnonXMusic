@@ -429,57 +429,71 @@ async def del_back_playlist(client, CallbackQuery, _):
             await CallbackQuery.edit_message_text(txt)
     else:
         playing = db.get(chat_id)
-    if not playing:
-        return await message.reply_text(_["queue_2"])
-    duration_seconds = int(playing[0]["seconds"])
-    if duration_seconds == 0:
-        return await message.reply_text(_["admin_22"])
-    file_path = playing[0]["file"]
-    duration_played = int(playing[0]["played"])
-    duration_to_skip = int(query)
-    duration = playing[0]["dur"]
-    if message.command[0][-2] == "c":
-        if (duration_played - duration_to_skip) <= 10:
-            return await message.reply_text(
-                text=_["admin_23"].format(seconds_to_min(duration_played), duration),
-                reply_markup=close_markup(_),
+        if not playing:
+            return await CallbackQuery.answer(
+                _["queue_2"], show_alert=True
             )
-        to_seek = duration_played - duration_to_skip + 1
-    else:
-        if (duration_seconds - (duration_played + duration_to_skip)) <= 10:
-            return await message.reply_text(
-                text=_["admin_23"].format(seconds_to_min(duration_played), duration),
-                reply_markup=close_markup(_),
+        duration_seconds = int(playing[0]["seconds"])
+        if duration_seconds == 0:
+            return await CallbackQuery.answer(
+                _["admin_30"], show_alert=True
             )
-        to_seek = duration_played + duration_to_skip + 1
-    mystic = await message.reply_text(_["admin_24"])
-    if "vid_" in file_path:
-        n, file_path = await YouTube.video(playing[0]["vidid"], True)
-        if n == 0:
-            return await message.reply_text(_["admin_22"])
-    check = (playing[0]).get("speed_path")
-    if check:
-        file_path = check
-    if "index_" in file_path:
-        file_path = playing[0]["vidid"]
-    try:
-        await Anony.seek_stream(
-            chat_id,
-            file_path,
-            seconds_to_min(to_seek),
-            duration,
-            playing[0]["streamtype"],
+        file_path = playing[0]["file"]
+        if "index_" in file_path or "live_" in file_path:
+            return await CallbackQuery.answer(
+                _["admin_30"], show_alert=True
+            )
+        duration_played = int(playing[0]["played"])
+        if int(command) in [1, 2]:
+            duration_to_skip = 10
+        else:
+            duration_to_skip = 30
+        duration = playing[0]["dur"]
+        if int(command) in [1, 3]:
+            if (duration_played - duration_to_skip) <= 10:
+                bet = seconds_to_min(duration_played)
+                return await CallbackQuery.answer(
+                    f"Bot is not able to seek due to total duration has been exceeded.\n\nCurrently played** {bet}** mins out of **{duration}** mins",
+                    show_alert=True,
+                )
+            to_seek = duration_played - duration_to_skip + 1
+        else:
+            if (
+                duration_seconds
+                - (duration_played + duration_to_skip)
+            ) <= 10:
+                bet = seconds_to_min(duration_played)
+                return await CallbackQuery.answer(
+                    f"Bot is not able to seek due to total duration has been exceeded.\n\nCurrently played** {bet}** mins out of **{duration}** mins",
+                    show_alert=True,
+                )
+            to_seek = duration_played + duration_to_skip + 1
+        await CallbackQuery.answer()
+        mystic = await CallbackQuery.message.reply_text(_["admin_32"])
+        if "vid_" in file_path:
+            n, file_path = await YouTube.video(
+                playing[0]["vidid"], True
+            )
+            if n == 0:
+                return await mystic.edit_text(_["admin_30"])
+        try:
+            await Yukki.seek_stream(
+                chat_id,
+                file_path,
+                seconds_to_min(to_seek),
+                duration,
+                playing[0]["streamtype"],
+            )
+        except:
+            return await mystic.edit_text(_["admin_34"])
+        if int(command) in [1, 3]:
+            db[chat_id][0]["played"] -= duration_to_skip
+        else:
+            db[chat_id][0]["played"] += duration_to_skip
+        string = _["admin_33"].format(seconds_to_min(to_seek))
+        await mystic.edit_text(
+            f"{string}\n\nChanges done by: {mention}"
         )
-    except:
-        return await mystic.edit_text(_["admin_26"], reply_markup=close_markup(_))
-    if message.command[0][-2] == "c":
-        db[chat_id][0]["played"] -= duration_to_skip
-    else:
-        db[chat_id][0]["played"] += duration_to_skip
-    await mystic.edit_text(
-        text=_["admin_25"].format(seconds_to_min(to_seek), message.from_user.mention),
-        reply_markup=close_markup(_),
-    )
 
 async def markup_timer():
     while not await asyncio.sleep(7):
