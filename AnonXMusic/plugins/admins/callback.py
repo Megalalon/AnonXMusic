@@ -3,7 +3,7 @@ import random
 import asyncio
 
 from pyrogram import filters
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
+from pyrogram.types import CallbackQuery, InlineKeyboardButton, InlineKeyboardMarkup
 
 from AnonXMusic import YouTube, app
 from AnonXMusic.core.call import Anony
