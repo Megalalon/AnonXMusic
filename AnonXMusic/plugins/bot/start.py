@@ -7,6 +7,7 @@ import time
 from datetime import datetime
 
 from pyrogram import filters
+from pyrogram.types import *
 from pyrogram.enums import ChatType
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 from youtubesearchpython.__future__ import VideosSearch
