@@ -104,6 +104,7 @@ async def start_pm(client, message: Message, _):
                 )
     else:
         out = private_panel(_)
+        if m.chat.type == "private":
         accha = await m.reply_text(
             text = random.choice(EMOJIOS),
         )
