@@ -106,8 +106,7 @@ async def start_pm(client, message: Message, _):
         out = private_panel(_)
         if m.chat.type == "private":
         await m.reply_text(
-            text = random.choice(EMOJIOS),
-        )
+            text = random.choice(EMOJIOS)),
         await asyncio.sleep(1.3)
         await accha.edit("__ᴅιиg ᴅσиg ꨄ︎ ѕтαятιиg..__")
         await asyncio.sleep(0.2)
