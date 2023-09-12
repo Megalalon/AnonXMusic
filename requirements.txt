@@ -10,6 +10,7 @@ heroku3
 motor
 pillow
 psutil
+pymongo
 py-tgcalls==0.9.2
 pykeyboard
 pyrogram==2.0.106
@@ -18,7 +19,7 @@ pyyaml
 requests
 speedtest-cli
 spotipy
-tgcrypto
+tgcrypto==1.2.2
 unidecode
 yt-dlp
 youtube-search
