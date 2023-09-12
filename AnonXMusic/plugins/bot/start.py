@@ -1,4 +1,10 @@
+import requests
+import random
+import os
+import re
+import asyncio
 import time
+from datetime import datetime
 
 from pyrogram import filters
 from pyrogram.enums import ChatType
@@ -22,6 +28,19 @@ from AnonXMusic.utils.formatters import get_readable_time
 from AnonXMusic.utils.inline import help_pannel, private_panel, start_panel
 from config import BANNED_USERS
 from strings import get_string
+
+EMOJIOS = [ 
+      "💣",
+      "💥",
+      "🪄",
+      "🧨",
+      "⚡",
+      "🤡",
+      "👻",
+      "🎃",
+      "🎩",
+      "🕊",
+]
 
 
 @app.on_message(filters.command(["start"]) & filters.private & ~BANNED_USERS)
@@ -84,6 +103,20 @@ async def start_pm(client, message: Message, _):
                 )
     else:
         out = private_panel(_)
+        accha = await m.reply_text(
+            text = random.choice(EMOJIOS),
+        )
+        await asyncio.sleep(1.3)
+        await accha.edit("__ᴅιиg ᴅσиg ꨄ︎ ѕтαятιиg..__")
+        await asyncio.sleep(0.2)
+        await accha.edit("__ᴅιиg ᴅσиg ꨄ sтαятιиg.....__")
+        await asyncio.sleep(0.2)
+        await accha.edit("__ᴅιиg ᴅσиg ꨄ︎ sтαятιиg..__")
+        await asyncio.sleep(0.2)
+        await accha.delete()
+        umm = await message.reply_sticker("CAACAgUAAxkBAAJE8GK4EsoLVZC2SW5W5Q-QAkaoN8f_AAL9BQACiy14VGoQxOCDfE1KKQQ")
+        await asyncio.sleep(5)
+        await umm.delete()
         await message.reply_photo(
             photo=config.START_IMG_URL,
             caption=_["start_2"].format(message.from_user.mention, app.mention),
