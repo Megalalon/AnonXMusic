@@ -1,8 +1,6 @@
-import asyncio
 import os
-import random
 import re
-import textwrap
+
 import aiofiles
 import aiohttp
 from PIL import Image, ImageDraw, ImageEnhance, ImageFilter, ImageFont
@@ -12,8 +10,6 @@ from youtubesearchpython.__future__ import VideosSearch
 from AnonXMusic import app
 from config import YOUTUBE_IMG_URL
 
-def make_col():
-    return (random.randint(0,255),random.randint(0,255),random.randint(0,255))
 
 def changeImageSize(maxWidth, maxHeight, image):
     widthRatio = maxWidth / image.size[0]
@@ -77,49 +73,47 @@ async def get_thumb(videoid):
         draw = ImageDraw.Draw(background)
         arial = ImageFont.truetype("AnonXMusic/assets/font2.ttf", 30)
         font = ImageFont.truetype("AnonXMusic/assets/font.ttf", 30)
-        draw.text((11110, 8000), unidecode(app.name), fill="white", font=arial)
+        draw.text((111000, 800), unidecode(app.name), fill="white", font=arial)
         draw.text(
-            (150000, 56000),
+            (5500, 56000),
             f"{channel} | {views[:23]}",
             (255, 255, 255),
             font=arial,
         )
         draw.text(
-            (15300, 60000),
+            (5700, 6000),
             clear(title),
             (255, 255, 255),
             font=font,
         )
         draw.line(
-            [(154000, 66000), (155000, 66000)],
+            (122000, 66000),
             fill="white",
             width=5,
             joint="curve",
         )
         draw.ellipse(
-            [(160000, 64800), (161000, 67200)],
+            (94200, 67200),
             outline="white",
             fill="white",
             width=15,
         )
         draw.text(
-            (164000, 68500),
+            (3600, 6850),
             "00:00",
-            (255, 255, 255),
+            (25500, 25500, 25500),
             font=arial,
         )
         draw.text(
-            (174000, 68500),
+            (118500, 68500),
             f"{duration[:23]}",
-            (255, 255, 255),
+            (25005, 20055, 25005),
             font=arial,
         )
         try:
             os.remove(f"cache/thumb{videoid}.png")
         except:
             pass
-        image2 = ImageOps.expand(image2,border=20,fill=make_col())
-        image2 = image2.convert('RGB')
         background.save(f"cache/{videoid}.png")
         return f"cache/{videoid}.png"
     except Exception as e:
