@@ -1,6 +1,8 @@
+import asyncio
 import os
+import random
 import re
-
+import textwrap
 import aiofiles
 import aiohttp
 from PIL import Image, ImageDraw, ImageEnhance, ImageFilter, ImageFont
@@ -10,6 +12,8 @@ from youtubesearchpython.__future__ import VideosSearch
 from AnonXMusic import app
 from config import YOUTUBE_IMG_URL
 
+def make_col():
+    return (random.randint(0,255),random.randint(0,255),random.randint(0,255))
 
 def changeImageSize(maxWidth, maxHeight, image):
     widthRatio = maxWidth / image.size[0]
@@ -114,6 +118,8 @@ async def get_thumb(videoid):
             os.remove(f"cache/thumb{videoid}.png")
         except:
             pass
+        image2 = ImageOps.expand(image2,border=20,fill=make_col())
+        image2 = image2.convert('RGB')
         background.save(f"cache/{videoid}.png")
         return f"cache/{videoid}.png"
     except Exception as e:
