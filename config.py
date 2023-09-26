@@ -7,19 +7,19 @@ from pyrogram import filters
 load_dotenv()
 
 # Get this value from my.telegram.org/apps
-API_ID = int(getenv("API_ID", "12688949"))
-API_HASH = getenv("API_HASH", "dd43b0926db0fc730f80409e6c193454")
+API_ID = int(getenv("API_ID", ""))
+API_HASH = getenv("API_HASH", "")
 
 # Get your token from @BotFather on Telegram.
-BOT_TOKEN = getenv("BOT_TOKEN", "6249923794:AAHUQ1ZmEtpATjEPmE3CmV-DsJaBmpm5Ukw")
+BOT_TOKEN = getenv("BOT_TOKEN", "")
 
 # Get your mongo url from cloud.mongodb.com
-MONGO_DB_URI = getenv("MONGO_DB_URI", "mongodb+srv://musix:musix@cluster0.bl6xsxv.mongodb.net/?retryWrites=true&w=majority")
+MONGO_DB_URI = getenv("MONGO_DB_URI", "")
 
 DURATION_LIMIT_MIN = int(getenv("DURATION_LIMIT", "1000"))
 
 # Chat id of a group for logging bot's activities
-LOGGER_ID = int(getenv("LOGGER_ID", "-1001892309920"))
+LOGGER_ID = int(getenv("LOGGER_ID", ""))
 
 # Get this value from @FallenxBot on Telegram by /id
 OWNER_ID = int(getenv("OWNER_ID", "1471469091"))
@@ -40,15 +40,15 @@ GIT_TOKEN = getenv(
 )  # Fill this variable if your upstream repository is private
 
 SUPPORT_CHANNEL = getenv("SUPPORT_CHANNEL", "https://t.me/Alinallmovies")
-SUPPORT_CHAT = getenv("SUPPORT_CHAT", "https://t.me/Alinallmovies")
+SUPPORT_CHAT = getenv("SUPPORT_CHAT", "https://t.me/bestfriendsforevertamil")
 
 # Set this to True if you want the assistant to automatically leave chats after an interval
 AUTO_LEAVING_ASSISTANT = bool(getenv("AUTO_LEAVING_ASSISTANT", False))
 
 
 # Get this credentials from https://developer.spotify.com/dashboard
-SPOTIFY_CLIENT_ID = getenv("SPOTIFY_CLIENT_ID", None)
-SPOTIFY_CLIENT_SECRET = getenv("SPOTIFY_CLIENT_SECRET", None)
+SPOTIFY_CLIENT_ID = getenv("SPOTIFY_CLIENT_ID", "19609edb1b9f4ed7be0c8c1342039362")
+SPOTIFY_CLIENT_SECRET = getenv("SPOTIFY_CLIENT_SECRET", "409e31d3ddd64af08cfcc3b0f064fcbe""
 
 
 # Maximum limit for fetching playlist's track from youtube, spotify, apple links.
@@ -56,13 +56,13 @@ PLAYLIST_FETCH_LIMIT = int(getenv("PLAYLIST_FETCH_LIMIT", 25))
 
 
 # Telegram audio and video file size limit (in bytes)
-TG_AUDIO_FILESIZE_LIMIT = int(getenv("TG_AUDIO_FILESIZE_LIMIT", 104857600))
-TG_VIDEO_FILESIZE_LIMIT = int(getenv("TG_VIDEO_FILESIZE_LIMIT", 1073741824))
+TG_AUDIO_FILESIZE_LIMIT = int(getenv("TG_AUDIO_FILESIZE_LIMIT", 904857600))
+TG_VIDEO_FILESIZE_LIMIT = int(getenv("TG_VIDEO_FILESIZE_LIMIT", 9073741824))
 # Checkout https://www.gbmb.org/mb-to-bytes for converting mb to bytes
 
 
 # Get your pyrogram v2 session from @StringFatherBot on Telegram
-STRING1 = getenv("STRING_SESSION", "BQDBnjUAF6Dn_9ty6DNu-sp5cA5KwTj4HVRjj9zk9BokFGHIIz-wLoIO9t6yf9_4tnkIkfzqsryRFzRK_cgG37-Wghrhnp5RqIgAkm3SF8TWf9-e5CCGfCPri4XvVqvUTU8y_VoZM4xJQGaHQvKVuaAXgzb5kMteLd-dyO0YF12uiz1ew5jQuwqMfrZcbfASck_mwwsTqivmVvARZi6tbdP8d9LWll9dtjkPLkJerg0mbgFq-31ZKVnzxjPUq2B9-Kxispo6efuL_kPBOlFpdvhWGexNGLGo58qgK9lkCDN2ZuDzkdNIZA1piXIB-4qlCzSkjvULE7M8jloLaS3g-9R8OgLFxgAAAAFFQkTxAA")
+STRING1 = getenv("STRING_SESSION", "")
 STRING2 = getenv("STRING_SESSION2", None)
 STRING3 = getenv("STRING_SESSION3", None)
 STRING4 = getenv("STRING_SESSION4", None)
@@ -78,10 +78,10 @@ confirmer = {}
 
 
 START_IMG_URL = getenv(
-    "START_IMG_URL", "https://te.legra.ph/file/25efe6aa029c6baea73ea.jpg"
+    "START_IMG_URL", "https://telegra.ph/file/cf5e2970a627f7a9ee19d.jpg"
 )
 PING_IMG_URL = getenv(
-    "PING_IMG_URL", "https://te.legra.ph/file/b8a0c1a00db3e57522b53.jpg"
+    "PING_IMG_URL", "https://telegra.ph/file/c114254af1cc9aaa3b87f.jpg"
 )
 PLAYLIST_IMG_URL = "https://te.legra.ph/file/4ec5ae4381dffb039b4ef.jpg"
 STATS_IMG_URL = "https://te.legra.ph/file/e906c2def5afe8a9b9120.jpg"
