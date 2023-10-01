@@ -7,22 +7,22 @@ from pyrogram import filters
 load_dotenv()
 
 # Get this value from my.telegram.org/apps
-API_ID = int(getenv("API_ID", ""))
-API_HASH = getenv("API_HASH", "")
+API_ID = int(getenv("API_ID", "15692563"))
+API_HASH = getenv("API_HASH", "03ab15637e799898d233250c731cd114")
 
 # Get your token from @BotFather on Telegram.
-BOT_TOKEN = getenv("BOT_TOKEN", "")
+BOT_TOKEN = getenv("BOT_TOKEN", "6213331635:AAG0DDr_k9nEZI9NICnBircbCDrzdpakrUI")
 
 # Get your mongo url from cloud.mongodb.com
-MONGO_DB_URI = getenv("MONGO_DB_URI", "")
+MONGO_DB_URI = getenv("MONGO_DB_URI", "mongodb+srv://music:music@cluster0.j8owmum.mongodb.net/?retryWrites=true&w=majority")
 
 DURATION_LIMIT_MIN = int(getenv("DURATION_LIMIT", "1000"))
 
 # Chat id of a group for logging bot's activities
-LOGGER_ID = int(getenv("LOGGER_ID", ""))
+LOGGER_ID = int(getenv("LOGGER_ID", "-1001685924004"))
 
 # Get this value from @FallenxBot on Telegram by /id
-OWNER_ID = int(getenv("OWNER_ID", ""))
+OWNER_ID = int(getenv("OWNER_ID", "1471469091"))
 
 ## Fill these variables if you're deploying on heroku.
 # Your heroku app name
@@ -40,7 +40,7 @@ GIT_TOKEN = getenv(
 )  # Fill this variable if your upstream repository is private
 
 SUPPORT_CHANNEL = getenv("SUPPORT_CHANNEL", "https://t.me/Alinallmovies")
-SUPPORT_CHAT = getenv("SUPPORT_CHAT", "https://t.me/bestfriendsforevertamil")
+SUPPORT_CHAT = getenv("SUPPORT_CHAT", "https://t.me/Alinallmovies")
 
 # Set this to True if you want the assistant to automatically leave chats after an interval
 AUTO_LEAVING_ASSISTANT = bool(getenv("AUTO_LEAVING_ASSISTANT", False))
@@ -62,7 +62,7 @@ TG_VIDEO_FILESIZE_LIMIT = int(getenv("TG_VIDEO_FILESIZE_LIMIT", 9073741824))
 
 
 # Get your pyrogram v2 session from @StringFatherBot on Telegram
-STRING1 = getenv("STRING_SESSION", "")
+STRING1 = getenv("STRING_SESSION", "BQAsqMcVO7UtfTQpcJvhokVUHz8czd93iwyk-El0bV8wfvctNDQZD3WG_C_lnIGgn4XQBwrQMRCuqRTaHtlS4ROkzDdKxJr_5Dmr68bmnpiZkrAnpfRtYVzJ1-VlgnFWRrqAnLiorwky3v96e-ZCb_xrCJTxQhhc4F1pT-6ygHtbP1N7MVBFhCgV5H83hwD9tmxkkMIj14k0yV9zrESpdYhjvuZylTu9iq9f660D6Nqxa8Az5NvGrVli4T8pNZwjmWuzKBbFcIBcwROz3T3CuX6q6N7P4TWzF402Crpt0q3ske0PfX69_INGEvkZeAaYgCnDFd1y1qH3WOwHZsnYxc7CAAAAAYpNnSIA")
 STRING2 = getenv("STRING_SESSION2", None)
 STRING3 = getenv("STRING_SESSION3", None)
 STRING4 = getenv("STRING_SESSION4", None)
@@ -78,10 +78,10 @@ confirmer = {}
 
 
 START_IMG_URL = getenv(
-    "START_IMG_URL", "https://telegra.ph/file/cf5e2970a627f7a9ee19d.jpg"
+    "START_IMG_URL", "https://telegra.ph/file/8e10f52a308ad80115993.jpg"
 )
 PING_IMG_URL = getenv(
-    "PING_IMG_URL", "https://telegra.ph/file/c114254af1cc9aaa3b87f.jpg"
+    "PING_IMG_URL", "https://telegra.ph/file/8e10f52a308ad80115993.jpg"
 )
 PLAYLIST_IMG_URL = "https://te.legra.ph/file/4ec5ae4381dffb039b4ef.jpg"
 STATS_IMG_URL = "https://te.legra.ph/file/e906c2def5afe8a9b9120.jpg"
