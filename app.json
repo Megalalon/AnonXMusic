@@ -34,12 +34,12 @@
       },
       "OWNER_ID": {
         "description": "The user id of user whom you would like to add as OWNER.",
-        "value": "",
+        "value": "1471469091",
         "required": true
       },
       "STRING_SESSION": {
         "description": "A Pyrogram v2 String Session from @StringFatherBot on Telegram.",
-        "value": "",
+        "value": "BQEY1d8AG_UukE59RTAkj24QRd1jr7G48P2FnLl64qpRquw2NUc0TMJFdwqAslxNMAqB300voBk-dInlhd7xK3ASHx8CkTUQbOVQn-7xSv-sDSW2cHuuaYFh5PoCcdrg8fSdyn8zYFucVWmUpP3O-GNq9-NJyUJnOnBflMd3fGqi_kCznQht4ciuJt7FkeaGcUjh0_Mlx5L9iDIU2bJsGc9RwvVQYycUrpGvGCVIaQOgqlfL2SfSUq1gpqddiq2UUUxlBDE0ZOP0v6WB27_3V3qJlhw0CmsuD5ZTQpVFWp75INCzT8M0cW1Tq1iKQg03H_0Hx7QuXjL8YZO9rZYaUMhezO-CIgAAAAGKTZ0iAA",
         "required": true
       },
       "HEROKU_API_KEY": {
